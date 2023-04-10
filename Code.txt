@@ -1,0 +1,81 @@
+CREATE TABLE tblaccount (
+  userID INT(100) NOT NULL AUTO_INCREMENT,
+  firstName VARCHAR(30),
+  lastName VARCHAR(30),
+  contact VARCHAR(11),
+  address VARCHAR(50),
+  gender VARCHAR(10),
+  email VARCHAR(40),
+  username VARCHAR(30),
+  password VARCHAR(30),
+  PRIMARY KEY (userID)
+);
+
+CREATE TABLE tblpets(
+  petID INT(100) NOT NULL AUTO_INCREMENT,
+  type VARCHAR(30),
+  name VARCHAR(30),
+  breed VARCHAR(11),
+  color VARCHAR(50),
+  gender VARCHAR(10),
+  weight VARCHAR(40),
+  age VARCHAR(30),
+  PRIMARY KEY (petID)
+);
+
+ALTER TABLE tblsignin
+ADD usertype int;
+
+UPDATE tblaccount
+SET utype = '0'
+WHERE userID= 1;
+
+CREATE TABLE tblsignin AS
+SELECT userID,username, password
+FROM tblaccount;
+
+CREATE TABBLE tblpets AS 
+SELECT fname, lname, username
+FROM tblaccount;
+
+ALTER TABLE tblaccount
+DROP COLUMN usertype;
+
+INSERT INTO tblsignin (username, password, usertype)
+VALUES ('staff1', 'staff123', 3);
+-----------
+ALTER TABLE tblpets
+DROP COLUMN ownerID;
+
+ALTER TABLE tblpets ADD FOREIGN KEY (petID) REFERENCES tblaccount(userID)
+
+ALTER TABLE tblpets AS SELECT fname, lname, username
+------
+If txtfname.Text = "" Or txtlname.Text = "" Or txtcontact.Text = "" Or txtaddress.Text = ""  Or cbGender.SelectedItem = "" Or txtemail.Text = "" Or txtusername.Text = "" Or txtpassword.Text = "" Then
+                MsgBox("Please complete all details", vbOKOnly + vbInformation, "PET STORE")
+                txtfname.Focus()
+
+
+"INSERT INTO tblaccount (firstName,lastName,contact,address,gender,email,username,password) 
+                                VALUES('" & txtfname.Text & "', '" & txtlname.Text & "' , '" & txtcontact.Text & "','" & ttxtaddress.Text & "','" & cbGender.SelectedItem & "','" & txtemail.Text & "','" & txtusername.Text & "','" & txtpassword.Text & "')"
+
+
+=====
+COLOR HEX
+(welcome)
+dark green #75A25D 117, 162, 93
+green #9DC08B 157, 192, 139
+
+(sign in)
+light blue #BDCDD6 189, 205, 214
+dark blue #6096B4 96, 150, 180
+
+(register)
+light brown #CA8D5A 202, 141, 90
+dark brown #8F542E 143, 84, 46
+white #F7FBFE 247, 251, 254
+
+(mainpage)
+dark violet #966A9D 150, 106, 157
+light violet #EBDDED 235, 221, 237
+=====
